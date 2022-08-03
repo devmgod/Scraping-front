@@ -51,7 +51,7 @@ const UpcomingMovie = () => {
       </div>
 
 
-      <div className="row tr-movie-active">
+      {/* <div className="row tr-movie-active">
         {
                post.map((elem)=>{
                 //  const {id,image,title,date,quality,duration,ratings} = elem;
@@ -94,7 +94,7 @@ const UpcomingMovie = () => {
         })
 
       }
-      </div>
+      </div> */}
      
     </div>
   </section>

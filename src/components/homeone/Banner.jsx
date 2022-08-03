@@ -41,6 +41,8 @@ const Banner = () => {
               </ul>
             </div>
             <a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" className="banner-btn btn popup-video wow fadeInUp" data-wow-delay=".8s" data-wow-duration="1.8s"><i className="fas fa-play" /> Watch Now</a>
+            
+            <a href='http://vidmx.xyz/embed-2omx45gmwuz7.html' rel="noreferrer">play video</a>
           </div>
          
         </div>
