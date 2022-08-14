@@ -86,19 +86,43 @@ if ($('.scroll-to-target').length) {
                 </div>
                 <div className="navbar-wrap main-menu d-none d-lg-flex">
                   <ul className="navigation">
-                    <li className="active menu-item-has-children"><Link to="/"> HomeOne </Link>
+                    <li className="active menu-item-has-children"><Link to="/"> Home </Link>
                       {/* <ul className="submenu">
                         <li className="active"><Link to="/">HomeOne </Link></li>
                         <li><Link to="/index-2">Home Two </Link></li> 
                       </ul> */}
                     </li>
-                    <li className="menu-item-has-children"><a href="/#">Movie</a>
+                    <li className="menu-item-has-children"><a href="/#">Tamil</a>
                       {/* <ul className="submenu">
                         <li><a href="/movie">Movie</a></li>
                         <li><a href="/movie-details">Movie Details</a></li>
                       </ul> */}
                     </li>
-                    <li><a href="/tv-show">tv show</a></li>
+                    <li className="menu-item-has-children"><a href="/#">Hindi</a>
+                      {/* <ul className="submenu">
+                        <li><a href="/movie">Movie</a></li>
+                        <li><a href="/movie-details">Movie Details</a></li>
+                      </ul> */}
+                    </li>
+                    <li className="menu-item-has-children"><a href="/#">Telugu</a>
+                      {/* <ul className="submenu">
+                        <li><a href="/movie">Movie</a></li>
+                        <li><a href="/movie-details">Movie Details</a></li>
+                      </ul> */}
+                    </li>
+                    <li className="menu-item-has-children"><a href="/#">Kannada</a>
+                      {/* <ul className="submenu">
+                        <li><a href="/movie">Movie</a></li>
+                        <li><a href="/movie-details">Movie Details</a></li>
+                      </ul> */}
+                    </li>
+                    <li className="menu-item-has-children"><a href="/#">Mayalam</a>
+                      {/* <ul className="submenu">
+                        <li><a href="/movie">Movie</a></li>
+                        <li><a href="/movie-details">Movie Details</a></li>
+                      </ul> */}
+                    </li>
+                    {/* <li><a href="/tv-show">tv show</a></li> */}
                     {/* <li><a href="/pricing">Pricing</a></li> */}
                     {/* <li className="menu-item-has-children"><a href="/#">blog</a>
                       <ul className="submenu">
@@ -106,7 +130,7 @@ if ($('.scroll-to-target').length) {
                         <li><a href="/blog-details">Blog Details</a></li>
                       </ul>
                     </li> */}
-                    <li><a href="/contact">contacts</a></li>
+                    {/* <li><a href="/contact">contacts</a></li> */}
                   </ul>
                 </div>
                 <div className="header-action d-none d-md-block">
@@ -123,7 +147,6 @@ if ($('.scroll-to-target').length) {
                         </select>
                       </form>
                     </li>
-                    <li className="header-btn"><a href="/#" className="btn">Sign In</a></li>
                   </ul>
                 </div>
               </nav>

@@ -1,9 +1,13 @@
 import React,{ useEffect } from 'react'
+import {useLocation} from 'react-router-dom';
 import $ from "jquery";
 import "magnific-popup"
 
 
 const MovieDetail = () => {
+  const location = useLocation();
+  const state = location.state;
+  console.log('============================', state);
   useEffect(()=>{
 
 		$('.popup-video').magnificPopup({
@@ -16,14 +20,14 @@ const MovieDetail = () => {
       <div className="row align-items-center position-relative">
         <div className="col-xl-3 col-lg-4">
           <div className="movie-details-img">
-            <img src="img/poster/movie_details_img.jpg" alt="" />
-            <a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" className="popup-video"><img src="img/images/play_icon.png" alt="" /></a>
+            <img src={`./poster/${state.poster}`} alt="" />
+            <a href={state.iframurl} className="popup-video"><img src="img/images/play_icon.png" alt="" /></a>
           </div>
         </div>
         <div className="col-xl-6 col-lg-8">
           <div className="movie-details-content">
             <h5>New Episodes</h5>
-            <h2>The Easy <span>Reach</span></h2>
+            <h2>{state.title}</h2>
             <div className="banner-meta">
               <ul>
                 <li className="quality">
@@ -31,12 +35,12 @@ const MovieDetail = () => {
                   <span>hd</span>
                 </li>
                 <li className="category">
-                  <a href="/#">Romance,</a>
-                  <a href="/#">Drama</a>
+                  <a href="/#">{state.genres}</a>
+                  {/* <a href="/#">Drama</a> */}
                 </li>
                 <li className="release-time">
-                  <span><i className="far fa-calendar-alt" /> 2021</span>
-                  <span><i className="far fa-clock" /> 128 min</span>
+                  <span><i className="far fa-calendar-alt" /> {state.year}</span>
+                  <span><i className="far fa-clock" /> {state.runtime}</span>
                 </li>
               </ul>
             </div>
@@ -50,13 +54,13 @@ const MovieDetail = () => {
                   <h6>Prime Video</h6>
                   <span>Streaming Channels</span>
                 </li>
-                <li className="watch"><a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" className="btn popup-video"><i className="fas fa-play" /> Watch Now</a></li>
+                <li className="watch"><a href={state.iframurl} className="btn popup-video"><i className="fas fa-play" /> Watch Now</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div className="movie-details-btn">
-          <a href="/img/poster/movie_details_img.jpg" className="download-btn" download>Download <img src="fonts/download.svg" alt="" /></a>
+          <a href={`./poster/${state.poster}`} className="download-btn" download>Download <img src="fonts/download.svg" alt="" /></a>
         </div>
       </div>
     </div>
