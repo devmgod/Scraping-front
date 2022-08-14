@@ -1,15 +1,33 @@
-import React,{ useEffect } from 'react';
-import { Link } from "react-router-dom";
+import React,{ useState, useEffect } from 'react';
+import Menu from './UpMovieItemMenu'
+import { Link, useNavigate } from "react-router-dom";
+import {motion} from 'framer-motion'
 import $ from "jquery";
+import axios from 'axios';
 
 const Header = () => {
+  const [post, setPost] = useState(Menu);
+  const navigate = useNavigate();
+  useEffect( () => {
+    dbTable.map(async(val) => {
+      await axios.get(`http://localhost:8080/${val}/`).then((response) => {
+      setPost(response.data);
+      const data = response.data;
+      console.log(data);
+    });
+    // document.getElementsByClassName(categItem).classList = document.getElementsByClassName(categItem).classList || 'active'
+    // console.log(document.getElementsByClassName(categItem))
+    })
+  }, []);
 
+  const dbTable = ['tamil', 'kannada', 'hindi', 'malayalam', 'telugu', 'upcoming', 'featured'];
+  const [items, setItems] = useState(Menu);
+    const filterItem = ()=>{
+      
+      
+    }
   
   useEffect(()=>{
-
-
-
-
 /*=============================================
 	=    		Mobile Menu			      =
 =============================================*/
@@ -72,7 +90,7 @@ if ($('.scroll-to-target').length) {
   },[])
   return (
     <header>
-    <div id="sticky-header" className="menu-area transparent-header">
+    <motion.div id="sticky-header" className="menu-area transparent-header">
       <div className="container custom-container">
         <div className="row">
           <div className="col-12">
@@ -86,51 +104,36 @@ if ($('.scroll-to-target').length) {
                 </div>
                 <div className="navbar-wrap main-menu d-none d-lg-flex">
                   <ul className="navigation">
-                    <li className="active menu-item-has-children"><Link to="/"> Home </Link>
-                      {/* <ul className="submenu">
-                        <li className="active"><Link to="/">HomeOne </Link></li>
-                        <li><Link to="/index-2">Home Two </Link></li> 
-                      </ul> */}
+                    <li className="active menu-item-has-children">
+                      <Link to="/"> Home </Link>
                     </li>
-                    <li className="menu-item-has-children"><a href="/#">Tamil</a>
-                      {/* <ul className="submenu">
-                        <li><a href="/movie">Movie</a></li>
-                        <li><a href="/movie-details">Movie Details</a></li>
-                      </ul> */}
+                    <li className="menu-item-has-children">
+                      <Link to={{
+                                pathname:"/tv-show",
+                                state: post
+                      }}>Tamil</Link>
+                      
                     </li>
-                    <li className="menu-item-has-children"><a href="/#">Hindi</a>
-                      {/* <ul className="submenu">
-                        <li><a href="/movie">Movie</a></li>
-                        <li><a href="/movie-details">Movie Details</a></li>
-                      </ul> */}
+                    <li className="menu-item-has-children">
+                      <a href="/tv-show" onClick={()=> {filterItem()}}>Hindi</a>
+                     
                     </li>
-                    <li className="menu-item-has-children"><a href="/#">Telugu</a>
-                      {/* <ul className="submenu">
-                        <li><a href="/movie">Movie</a></li>
-                        <li><a href="/movie-details">Movie Details</a></li>
-                      </ul> */}
+                    <li className="menu-item-has-children">
+                      <a href="/tv-show">Telugu</a>
+                      
                     </li>
-                    <li className="menu-item-has-children"><a href="/#">Kannada</a>
-                      {/* <ul className="submenu">
-                        <li><a href="/movie">Movie</a></li>
-                        <li><a href="/movie-details">Movie Details</a></li>
-                      </ul> */}
+                    <li className="menu-item-has-children">
+                      <a href="/tv-show">Kannada</a>
+                      
                     </li>
-                    <li className="menu-item-has-children"><a href="/#">Mayalam</a>
-                      {/* <ul className="submenu">
-                        <li><a href="/movie">Movie</a></li>
-                        <li><a href="/movie-details">Movie Details</a></li>
-                      </ul> */}
+                    <li className="menu-item-has-children">
+                      <a href="/tv-show">Mayalam</a>
+                      
                     </li>
-                    {/* <li><a href="/tv-show">tv show</a></li> */}
-                    {/* <li><a href="/pricing">Pricing</a></li> */}
-                    {/* <li className="menu-item-has-children"><a href="/#">blog</a>
-                      <ul className="submenu">
-                        <li><a href="/blog">Our Blog</a></li>
-                        <li><a href="/blog-details">Blog Details</a></li>
-                      </ul>
-                    </li> */}
-                    {/* <li><a href="/contact">contacts</a></li> */}
+                    <li><a href="/tv-show">tv show</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    
+                    <li><a href="/contact">contacts</a></li>
                   </ul>
                 </div>
                 <div className="header-action d-none d-md-block">
@@ -188,7 +191,7 @@ if ($('.scroll-to-target').length) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   </header>
   )
 }

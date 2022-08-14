@@ -10,7 +10,7 @@ const TopRatedMovies = () => {
     const [post, setPost] = useState(Menu);
     const navigate = useNavigate();
     useEffect(async () => {
-      await axios.get("http://localhost:8080/tamil/").then((response) => {
+      await axios.get("http://localhost:8080/featured/").then((response) => {
         setPost(response.data);
         const data = response.data;
         console.log(data);
@@ -18,15 +18,15 @@ const TopRatedMovies = () => {
     }, []);
   
     const [items, setItems] = useState(Menu);
-    const filterItem = async(categItem, e)=>{
-      await axios.get(`http://localhost:8080/${categItem}/`).then((response) => {
-        setPost(response.data);
-        const data = response.data;
-        console.log(data);
-      });
-      document.getElementsByClassName(categItem).classList = document.getElementsByClassName(categItem).classList || 'active'
-      console.log(document.getElementsByClassName(categItem))
-    }
+    // const filterItem = async(categItem, e)=>{
+    //   await axios.get(`http://localhost:8080/${categItem}/`).then((response) => {
+    //     setPost(response.data);
+    //     const data = response.data;
+    //     console.log(data);
+    //   });
+    //   document.getElementsByClassName(categItem).classList = document.getElementsByClassName(categItem).classList || 'active'
+    //   console.log(document.getElementsByClassName(categItem))
+    // }
     return (
     
     <section className="top-rated-movie tr-movie-bg" style={{backgroundImage:'url("../../img/bg/tr_movies_bg.jpg")'}}>
@@ -42,13 +42,13 @@ const TopRatedMovies = () => {
         <div className="row justify-content-center">
           <div className="col-lg-8">
             <div className="tr-movie-menu-active text-center">
-              <button className='tamil'  data-filter="*" onClick={()=> filterItem('tamil')}>Tamil</button>
+              {/* <button className='tamil'  data-filter="*" onClick={()=> filterItem('tamil')}>Tamil</button>
               <button className='kannada active' data-filter=".cat-two" onClick={()=> filterItem('kannada')}>Kannada</button>
               <button className='hindi' data-filter=".cat-one" onClick={()=> filterItem('hindi')}>Hindi</button>
               <button className='malayalam' data-filter=".cat-three" onClick={()=> filterItem('malayalam')}>Malayalam</button>
               <button className='telugu' data-filter=".cat-four" onClick={()=> filterItem('telugu')}>Telugu</button>
               <button className='upcoming' data-filter=".cat-five" onClick={()=> filterItem('upcoming')}>Upcoming</button>
-              <button className='featured' data-filter=".cat-six" onClick={()=> filterItem('featured')}>Featured</button>
+    <button className='featured' data-filter=".cat-six" onClick={()=> filterItem('featured')}>Featured</button> */}
             </div>
           </div>
         </div>

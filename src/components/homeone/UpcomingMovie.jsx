@@ -47,7 +47,7 @@ const UpcomingMovie = () => {
         <div className="row justify-content-center">
           <div className="col-lg-8">
             <div className="tr-movie-menu2-active text-center">
-              <button
+              {/* <button
                 className="active"
                 data-filter="*"
                 onClick={() => setItems(post)}
@@ -71,7 +71,7 @@ const UpcomingMovie = () => {
                 onClick={() => filterItem("sports")}
               >
                 sports
-              </button>
+  </button> */}
             </div>
           </div>
         </div>
