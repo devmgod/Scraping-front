@@ -1,8 +1,12 @@
 import React,{ useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import { motion } from "framer-motion";
 import Menu from './MovieMenu';
 
-function MovieArea() {
+const MovieArea = ({parentToChild}) => {
+  console.log('++++++++++++++++++++', parentToChild);
+  const navigate = useNavigate();
   const [items, setItems ] = useState(Menu);
   const filterItem = (categItem)=>{
     const updatesItems = Menu.filter((curElem)=>{
@@ -44,34 +48,42 @@ function MovieArea() {
       </div>
       <div className="row tr-movie-active">
       {
-               items.map((elem)=>{
-                const {id,image,title,date,quality,duration,ratings} = elem;
-
+               parentToChild.map((elem)=>{
+                // const {id,image,title,date,quality,duration,ratings} = elem;
+                const { id, poster, title, year, genres, runtime } = elem;
+                const image = "./poster/" + poster;
           return(
 
             
-             <div className="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-two" key={id}>
+             <motion.div className="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-two" key={id}>
             <div className="movie-item mb-60">
-              <div className="movie-poster">
-                <a href="/movie-details"><img src={image} alt="" /></a>
-              </div>
+              <motion.div className="movie-poster">
+                <a onClick={() => {navigate("/movie-details", {state: elem})}}><img src={image} alt="" /></a>
+              </motion.div>
               <div className="movie-content">
                 <div className="top">
-                  <h5 className="title"><a href="/movie-details">{title}</a></h5>
-                  <span className="date">{date}</span>
+                  <h5 className="title">
+                  <Link to={{
+                        pathname: "/movie-details",
+                        state: parentToChild
+                      }}
+                      >
+                        {title}
+                      </Link>
+                  </h5>
+                  <span className="date">{year}</span>
                 </div>
                 <div className="bottom">
                   <ul>
-                    <li><span className="quality">{quality}</span></li>
+                    <li><span className="quality">{genres}</span></li>
                     <li>
-                      <span className="duration"><i className="far fa-clock" />{duration}</span>
-                      <span className="rating"><i className="fas fa-thumbs-up" />{ratings}</span>
+                      <span className="duration"><i className="far fa-clock" />{runtime}</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
        
          
          

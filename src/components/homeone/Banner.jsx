@@ -16,7 +16,7 @@ const Banner = () => {
 
 
   return (
-    <section className="banner-area banner-bg" style={{backgroundImage:'url("../poster/sooryavanshi.jpg")'}}>
+    <section className="banner-area banner-bg" style={{backgroundImage:'url("../img/banner/banner_bg01.jpg")'}}>
     <div className="container custom-container">
       <div className="row">
         <div className="col-xl-6 col-lg-8">

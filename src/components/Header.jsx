@@ -6,21 +6,43 @@ import $ from "jquery";
 import axios from 'axios';
 
 const Header = () => {
-  const [post, setPost] = useState(Menu);
+  const [tamil, setTamil] = useState(Menu);
+  const [kannada, setKannada] = useState(Menu);
+  const [hindi, setHindi] = useState(Menu);
+  const [malayalam, setMalayalam] = useState(Menu);
+  const [telugu, setTelugu] = useState(Menu);
+  const [upcoming, setUpcoming] = useState(Menu);
+  const [featured, setFeatured] = useState(Menu);
+
   const navigate = useNavigate();
-  useEffect( () => {
-    dbTable.map(async(val) => {
-      await axios.get(`http://localhost:8080/${val}/`).then((response) => {
-      setPost(response.data);
-      const data = response.data;
-      console.log(data);
-    });
-    // document.getElementsByClassName(categItem).classList = document.getElementsByClassName(categItem).classList || 'active'
-    // console.log(document.getElementsByClassName(categItem))
+  // const dbTable = ['tamil', 'kannada', 'hindi', 'malayalam', 'telugu', 'upcoming', 'featured'];
+  // const {tamil,kannada, hindi, malayalam, telugu, upcoming, featured} = dbTable;
+
+  useEffect( async() => {
+      await axios.get(`http://localhost:8080/tamil/`).then((response) => {
+      setTamil(response.data);
+    })
+      await axios.get(`http://localhost:8080/kannada/`).then((response) => {
+      setKannada(response.data);
+    })
+      await axios.get(`http://localhost:8080/hindi/`).then((response) => {
+      setHindi(response.data);
+    })
+      await axios.get(`http://localhost:8080/malayalam/`).then((response) => {
+      setMalayalam(response.data);
+    })
+      await axios.get(`http://localhost:8080/telugu/`).then((response) => {
+      setTelugu(response.data);
+    })
+      await axios.get(`http://localhost:8080/upcoming/`).then((response) => {
+      setUpcoming(response.data);
+    })
+      await axios.get(`http://localhost:8080/featured/`).then((response) => {
+      setFeatured(response.data);
     })
   }, []);
 
-  const dbTable = ['tamil', 'kannada', 'hindi', 'malayalam', 'telugu', 'upcoming', 'featured'];
+  
   const [items, setItems] = useState(Menu);
     const filterItem = ()=>{
       
@@ -107,33 +129,27 @@ if ($('.scroll-to-target').length) {
                     <li className="active menu-item-has-children">
                       <Link to="/"> Home </Link>
                     </li>
-                    <li className="menu-item-has-children">
-                      <Link to={{
-                                pathname:"/tv-show",
-                                state: post
-                      }}>Tamil</Link>
-                      
-                    </li>
-                    <li className="menu-item-has-children">
-                      <a href="/tv-show" onClick={()=> {filterItem()}}>Hindi</a>
-                     
-                    </li>
-                    <li className="menu-item-has-children">
-                      <a href="/tv-show">Telugu</a>
-                      
-                    </li>
-                    <li className="menu-item-has-children">
-                      <a href="/tv-show">Kannada</a>
-                      
-                    </li>
-                    <li className="menu-item-has-children">
-                      <a href="/tv-show">Mayalam</a>
-                      
-                    </li>
-                    <li><a href="/tv-show">tv show</a></li>
+                    
+                    <motion.li className="menu-item-has-children">
+                      <a onClick={() => {navigate('/tv-show', {state: tamil})}}>tamil</a>
+                    </motion.li>
+                    <motion.li className="menu-item-has-children">
+                      <a onClick={() => {navigate('/tv-show', {state: kannada})}}>kannada</a>
+                    </motion.li>
+                    <motion.li className="menu-item-has-children">
+                      <a onClick={() => {navigate('/tv-show', {state: hindi})}}>hindi</a>
+                    </motion.li>
+                    <motion.li className="menu-item-has-children">
+                      <a onClick={() => {navigate('/tv-show', {state: telugu})}}>Telugu</a>
+                    </motion.li>
+                    <motion.li className="menu-item-has-children">
+                      <a onClick={() => {navigate('/tv-show', {state: malayalam})}}>malayalam</a>
+                    </motion.li>
+                    
+                    {/* <li><a href="/tv-show">tv show</a></li>
                     <li><a href="/pricing">Pricing</a></li>
                     
-                    <li><a href="/contact">contacts</a></li>
+                    <li><a href="/contact">contacts</a></li> */}
                   </ul>
                 </div>
                 <div className="header-action d-none d-md-block">

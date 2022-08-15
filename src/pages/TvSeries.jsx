@@ -8,14 +8,14 @@ import Breadcrumb from '../components/tv/Breadcrumb'
 
 const TvSeries = () => {
   const location = useLocation();
-  const state = location.state;
-  console.log('============================', state);
+  const data = location.state;
+  console.log('============================', data);
   return (
     <div>
         <Header/>
         <main>
             <Breadcrumb/>
-            <MovieArea/>
+            <MovieArea parentToChild={data}/>
             <Newsletter/>
         </main>
         <Footer/>
