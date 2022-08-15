@@ -11,8 +11,6 @@ const Header = () => {
   const [hindi, setHindi] = useState(Menu);
   const [malayalam, setMalayalam] = useState(Menu);
   const [telugu, setTelugu] = useState(Menu);
-  const [upcoming, setUpcoming] = useState(Menu);
-  const [featured, setFeatured] = useState(Menu);
 
   const navigate = useNavigate();
   // const dbTable = ['tamil', 'kannada', 'hindi', 'malayalam', 'telugu', 'upcoming', 'featured'];
@@ -33,12 +31,6 @@ const Header = () => {
     })
       await axios.get(`http://localhost:8080/telugu/`).then((response) => {
       setTelugu(response.data);
-    })
-      await axios.get(`http://localhost:8080/upcoming/`).then((response) => {
-      setUpcoming(response.data);
-    })
-      await axios.get(`http://localhost:8080/featured/`).then((response) => {
-      setFeatured(response.data);
     })
   }, []);
 
