@@ -8,7 +8,7 @@ import TvSeries from '../components/moviedetails/TvSeries'
 const MovieDetails = () => {
   return (
     <div>
-        <Header/>
+        <Header tabIndex={2} />
         <main>
             <MovieDetail/>
             <EpipsodeArea/>

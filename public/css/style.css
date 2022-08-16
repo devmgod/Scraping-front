@@ -410,7 +410,9 @@ label {
 }
 
 .navbar-wrap>ul>li {
+    cursor: pointer;
     display: block;
+    color: white;
     position: relative;
 }
 
@@ -424,6 +426,10 @@ label {
     line-height: 1;
     position: relative;
     z-index: 1;
+}
+
+.navbar-wrap>ul>li:hover {
+    color: #e4d804;
 }
 
 .main-menu .navigation li.menu-item-has-children .dropdown-btn {
