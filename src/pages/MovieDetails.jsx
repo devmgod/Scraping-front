@@ -11,7 +11,7 @@ const MovieDetails = () => {
         <Header tabIndex={2} />
         <main>
             <MovieDetail/>
-            <EpipsodeArea/>
+            {/* <EpipsodeArea/> */}
             <TvSeries/>
         </main>
         <Footer/>

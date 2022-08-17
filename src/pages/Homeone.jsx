@@ -19,7 +19,7 @@ const Homeone = () => {
         <Service />
         <TopRatedMovies />
         <LiveArea />
-        <TvSerise />
+        {/* <TvSerise /> */}
         <NewsletterArea />
       </main>
       <Footer />

@@ -6,7 +6,7 @@ import "magnific-popup"
 
 const MovieDetail = () => {
   const location = useLocation();
-  const state = location.state;
+  const state = location.state.onedata;
   console.log('============================', state);
   useEffect(()=>{
 
@@ -60,7 +60,7 @@ const MovieDetail = () => {
           </div>
         </div>
         <div className="movie-details-btn">
-          <a href={`./poster/${state.poster}`} className="download-btn" download>Download <img src="fonts/download.svg" alt="" /></a>
+          <a href={state.videourl} className="download-btn" download>Download <img src="fonts/download.svg" alt="" /></a>
         </div>
       </div>
     </div>

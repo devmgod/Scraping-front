@@ -35,14 +35,14 @@ const Header = () => {
     });
   }, []);
 
-  const [items, setItems] = useState(Menu);
-  const active = (i) => {
-    const activeMenu = document
-      .getElementsByClassName("menu-item-has-children")
-      [i].classList.add("active");
+  // const [items, setItems] = useState(Menu);
+  // const active = (i) => {
+  //   const activeMenu = document
+  //     .getElementsByClassName("menu-item-has-children")
+  //     [i].classList.add("active");
 
-    console.log("22222222222222222222", activeMenu);
-  };
+  //   console.log("22222222222222222222", activeMenu);
+  // };
 
   // filterItem();
   useEffect(() => {
@@ -215,7 +215,7 @@ const Header = () => {
                   </div>
                   <div className="header-action d-none d-md-block">
                     <ul>
-                      <li className="header-search">
+                      {/* <li className="header-search">
                         <a
                           href="/#"
                           data-toggle="modal"
@@ -223,7 +223,7 @@ const Header = () => {
                         >
                           <i className="fas fa-search" />
                         </a>
-                      </li>
+                      </li> */}
                       <li className="header-lang">
                         <form action="/#">
                           <div className="icon">
