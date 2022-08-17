@@ -14,7 +14,7 @@ const TvSeries = () => {
         <main>
             <Breadcrumb/>
             <MovieArea/>
-            <Newsletter/>
+            {/* <Newsletter/> */}
         </main>
         <Footer/>
     </div>
