@@ -7,15 +7,13 @@ import Newsletter from '../components/movie/Newsletter'
 import Breadcrumb from '../components/tv/Breadcrumb'
 
 const TvSeries = () => {
-  const location = useLocation();
-  const data = location.state;
-  console.log('============================', data);
+
   return (
     <div>
         <Header/>
         <main>
             <Breadcrumb/>
-            <MovieArea parentToChild={data}/>
+            <MovieArea/>
             <Newsletter/>
         </main>
         <Footer/>

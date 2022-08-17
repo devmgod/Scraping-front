@@ -80,8 +80,8 @@ const UpcomingMovie = () => {
           {post.map((elem) => {
             //  const {id,image,title,date,quality,duration,ratings} = elem;
             const { id, poster, title, year, genres, runtime } = elem;
-            const imgsrc = String(poster).split('/')[4];
-            console.log('asdfasdfasdfasdf',imgsrc);
+            const imgsrc = String(poster).split("/")[4];
+            console.log("asdfasdfasdfasdf", imgsrc);
             const image = "./poster/" + poster;
 
             return (
@@ -93,21 +93,19 @@ const UpcomingMovie = () => {
                 <div className="movie-item mb-60">
                   <motion.div layout className="movie-poster">
                     <a
-                      onClick={() => {navigate("/movie-details", {state: elem})}}
-                   
+                      onClick={() => {
+                        navigate("/movie-details", {
+                          state: { onedata: elem, alldata: post },
+                        });
+                      }}
                     >
                       <img src={image} alt="" />
                     </a>
-                   
                   </motion.div>
                   <div className="movie-content">
                     <div className="top">
                       <h5 className="title">
-                        <a
-                          href="/movie-details"
-                        >
-                          {title}
-                        </a>
+                        <a href="/movie-details">{title}</a>
                       </h5>
                       <span className="date">{year}</span>
                     </div>

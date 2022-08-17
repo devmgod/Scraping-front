@@ -64,15 +64,23 @@ const TopRatedMovies = () => {
               
                <motion.div className="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-two" key={id}>
               <div className="movie-item mb-60">
-                <motion.div className="movie-poster">
-                  <a onClick={() => {navigate("/movie-details", {state: elem})}}><img src={image} alt="" /></a>
-                </motion.div>
+                <motion.div layout className="movie-poster">
+                    <a
+                      onClick={() => {
+                        navigate("/movie-details", {
+                          state: { onedata: elem, alldata: post },
+                        });
+                      }}
+                    >
+                      <img src={image} alt="" />
+                    </a>
+                  </motion.div>
                 <div className="movie-content">
                   <div className="top">
                     <h5 className="title">
                       <Link to={{
                         pathname: "/movie-details",
-                        state: post
+                        state: { onedata: elem, alldata: post },
                       }}
                       >
                         {title}

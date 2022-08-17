@@ -49,7 +49,7 @@ const MovieDetail = () => {
               Ipsum available, but the majority have suffered alteration in some injected humour.</p>
             <div className="movie-details-prime">
               <ul>
-                <li className="share"><a href="/#"><i className="fas fa-share-alt" /> Share</a></li>
+                <li className="share"><a href={state.videourl}><i className="fas fa-share-alt" /> Share</a></li>
                 <li className="streaming">
                   <h6>Prime Video</h6>
                   <span>Streaming Channels</span>

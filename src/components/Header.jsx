@@ -144,7 +144,7 @@ const Header = () => {
                         <a
                           onClick={() => {
                             setTabIndex(1);
-                            navigate("/tv-show", { state: tamil });
+                            navigate("/tv-show", { state: {data: tamil, title: "Tamil"} });
                           }}
                         >
                           tamil
@@ -158,7 +158,7 @@ const Header = () => {
                         <a
                           onClick={() => {
                             setTabIndex(2);
-                            navigate("/tv-show", { state: kannada });
+                            navigate("/tv-show", { state: {data:kannada, title: "Kannada"} });
                           }}
                         >
                           kannada
@@ -172,7 +172,7 @@ const Header = () => {
                         <a
                           onClick={() => {
                             setTabIndex(3);
-                            navigate("/tv-show", { state: hindi });
+                            navigate("/tv-show", { state: {data: hindi, title: "Hindi"} });
                           }}
                         >
                           hindi
@@ -186,7 +186,7 @@ const Header = () => {
                         <a
                           onClick={() => {
                             setTabIndex(4);
-                            navigate("/tv-show", { state: telugu });
+                            navigate("/tv-show", { state: {data: telugu, title: "Telugu"} });
                           }}
                         >
                           Telugu
@@ -200,7 +200,7 @@ const Header = () => {
                         <a
                           onClick={() => {
                             setTabIndex(5);
-                            navigate("/tv-show", { state: malayalam });
+                            navigate("/tv-show", { state: {data: malayalam, title: "Malayalam"} });
                           }}
                         >
                           malayalam

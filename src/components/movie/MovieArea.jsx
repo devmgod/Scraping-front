@@ -4,9 +4,12 @@ import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Menu from "./MovieMenu";
 
-const MovieArea = ({ parentToChild }) => {
-  console.log("++++++++++++++++++++", parentToChild);
+const MovieArea = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const data = location.state.data;
+
+  console.log('============================', data);
   const [items, setItems] = useState(Menu);
   const filterItem = (categItem) => {
     const updatesItems = Menu.filter((curElem) => {
@@ -28,7 +31,7 @@ const MovieArea = ({ parentToChild }) => {
               <h2 className="title">New Release Movies</h2>
             </div>
           </div>
-          <div className="col-lg-6">
+          {/* <div className="col-lg-6">
             <div className="movie-page-meta">
               <div className="tr-movie-menu-active text-center">
                 <button
@@ -60,10 +63,10 @@ const MovieArea = ({ parentToChild }) => {
                 </select>
               </form>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="row tr-movie-active">
-          {parentToChild.map((elem) => {
+          {data.map((elem) => {
             // const {id,image,title,date,quality,duration,ratings} = elem;
             const { id, poster, title, year, genres, runtime } = elem;
             const image = "./poster/" + poster;
@@ -76,7 +79,9 @@ const MovieArea = ({ parentToChild }) => {
                   <motion.div className="movie-poster">
                     <a
                       onClick={() => {
-                        navigate("/movie-details", { state:{onedata: elem, alldata: parentToChild} });
+                        navigate("/movie-details", {
+                          state: { onedata: elem, alldata: data },
+                        });
                       }}
                     >
                       <img src={image} alt="" />
@@ -88,7 +93,7 @@ const MovieArea = ({ parentToChild }) => {
                         <Link
                           to={{
                             pathname: "/movie-details",
-                            state: parentToChild,
+                            state: data,
                           }}
                         >
                           {title}
@@ -115,7 +120,7 @@ const MovieArea = ({ parentToChild }) => {
             );
           })}
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-12">
             <div className="pagination-wrap mt-30">
               <nav>
@@ -139,7 +144,7 @@ const MovieArea = ({ parentToChild }) => {
               </nav>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
