@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link, useLocation,useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -28,10 +28,14 @@ const TvSeries = () => {
             </div>
           </div>
           <div className="row justify-content-center">
-            {data.map((elem) => {
+            {data.map((elem, index) => {
               // const {id,image,title,date,quality,duration,ratings} = elem;
               const { id, poster, title, year, genres, runtime } = elem;
               const image = "./poster/" + poster;
+              if(index >= 8){
+                elem = [];
+                return;
+              }
               return (
                 <motion.div className="col-xl-3 col-lg-4 col-sm-6" key={id}>
                   <div className="movie-item mb-50">

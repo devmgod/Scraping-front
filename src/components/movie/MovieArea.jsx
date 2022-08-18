@@ -32,11 +32,17 @@ const MovieArea = () => {
     $(".pagenation-ul").append(`
       <li class='pagenation-li-prev'><a>Prev</a></li>
     `);
-    for (let i = 1; i <= totalPage; i++) {
-      $(".pagenation-ul").append(`
-        <li class="pagenation-li-item" id=${i}><a>${i}</a></li>
-      `);
-    }
+    // for (let i = 1; i <= totalPage; i++) {
+    //   if (i > 3 && i < totalPage - 2) {
+    //     $(".pagenation-ul").append(`
+    //     <li class="pagenation-li-item" id=${i}><a>...</a></li>
+    //   `);
+    //   } else {
+    //     $(".pagenation-ul").append(`
+    //     <li class="pagenation-li-item" id=${i}><a>${i}</a></li>
+    //   `);
+    //   }
+    // }
     $(".pagenation-ul").append(`
       <li class="pagenation-li-next"><a>Next</a></li>
     `);
@@ -48,15 +54,19 @@ const MovieArea = () => {
     $(".pagenation-ul").on("click", ".pagenation-li-next", function () {
       if (currentpage < totalPage) {
         setCurrentpage(Number(currentpage + 1));
+      } else if (currentpage >= totalPage) {
+        setCurrentpage(1);
       }
     });
 
     $(".pagenation-ul").on("click", ".pagenation-li-prev", function () {
       if (currentpage > 1) {
         setCurrentpage(Number(currentpage - 1));
+      } else if (currentpage <= 1) {
+        setCurrentpage(Number(totalPage));
       }
     });
-    $(`.pagenation-ul #${currentpage}`).addClass('active')
+    $(`.pagenation-ul #${currentpage}`).addClass("active");
   }, [currentpage, data]);
 
   const filterItem = (categItem) => {
