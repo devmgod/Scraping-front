@@ -67,7 +67,7 @@ const HeaderTwo = () => {
       });
     }
     
-      },[])
+    },[])
   return (
     <header className="header-style-two">
     <div className="header-top-wrap">

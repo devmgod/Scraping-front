@@ -3,6 +3,9 @@ import { Link, useLocation,useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const TvSeries = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state.alldata;

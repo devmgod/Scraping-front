@@ -147,7 +147,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="footer-quick-link-wrap">
+          {/* <div className="footer-quick-link-wrap">
             <div className="row align-items-center">
               <div className="col-md-7">
                 <div className="quick-link-list">
@@ -194,7 +194,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </motion.div>
       <div className="copyright-wrap">
@@ -208,11 +208,11 @@ const Footer = () => {
                 </p>
               </div>
             </div>
-            <div className="col-lg-6 col-md-6">
+            {/* <div className="col-lg-6 col-md-6">
               <div className="payment-method-img text-center text-md-right">
                 <img src="img/images/card_img.png" alt="img" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

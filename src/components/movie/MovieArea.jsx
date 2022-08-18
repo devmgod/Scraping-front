@@ -1,16 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Menu from "./MovieMenu";
+import $ from "jquery";
+import ReactPaginate from "react-paginate";
 
 const MovieArea = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const [currentpage, setCurrentpage] = useState(1);
+  const [items, setItems] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state.data;
 
-  console.log('============================', data);
-  const [items, setItems] = useState(Menu);
+  useEffect(() => {
+    const totalPage = Math.ceil(data.length / 8);
+    const pushItem = [];
+    let pageLength = (currentpage - 1) * 8 + 8;
+    if (currentpage == totalPage) {
+      pageLength = data.length;
+    }
+    for (let i = (currentpage - 1) * 8; i < pageLength; i++) {
+      pushItem.push(data[i]);
+    }
+    setItems(pushItem);
+    $(".pagenation-ul").html("");
+    $(".pagenation-ul").append(`
+      <li class='pagenation-li-prev'><a>Prev</a></li>
+    `);
+    for (let i = 1; i <= totalPage; i++) {
+      $(".pagenation-ul").append(`
+        <li class="pagenation-li-item" id=${i}><a>${i}</a></li>
+      `);
+    }
+    $(".pagenation-ul").append(`
+      <li class="pagenation-li-next"><a>Next</a></li>
+    `);
+
+    $(".pagenation-ul").on("click", ".pagenation-li-item", function (event) {
+      setCurrentpage(Number(event.currentTarget.id));
+    });
+
+    $(".pagenation-ul").on("click", ".pagenation-li-next", function () {
+      if (currentpage < totalPage) {
+        setCurrentpage(Number(currentpage + 1));
+      }
+    });
+
+    $(".pagenation-ul").on("click", ".pagenation-li-prev", function () {
+      if (currentpage > 1) {
+        setCurrentpage(Number(currentpage - 1));
+      }
+    });
+    $(`.pagenation-ul #${currentpage}`).addClass('active')
+  }, [currentpage, data]);
+
   const filterItem = (categItem) => {
     const updatesItems = Menu.filter((curElem) => {
       return curElem.category === categItem;
@@ -66,14 +114,12 @@ const MovieArea = () => {
           </div> */}
         </div>
         <div className="row tr-movie-active">
-          {data.map((elem) => {
-            // const {id,image,title,date,quality,duration,ratings} = elem;
-            const { id, poster, title, year, genres, runtime } = elem;
-            const image = "./poster/" + poster;
+          {items.map((elem) => {
+            const image = "./poster/" + elem.poster;
             return (
               <motion.div
                 className="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-two"
-                key={id}
+                key={elem.id}
               >
                 <div className="movie-item mb-60">
                   <motion.div className="movie-poster">
@@ -96,20 +142,20 @@ const MovieArea = () => {
                             state: data,
                           }}
                         >
-                          {title}
+                          {elem.title}
                         </Link>
                       </h5>
-                      <span className="date">{year}</span>
+                      <span className="date">{elem.year}</span>
                     </div>
                     <div className="bottom">
                       <ul>
                         <li>
-                          <span className="quality">{genres}</span>
+                          <span className="quality">{elem.genres}</span>
                         </li>
                         <li>
                           <span className="duration">
                             <i className="far fa-clock" />
-                            {runtime}
+                            {elem.runtime}
                           </span>
                         </li>
                       </ul>
@@ -120,31 +166,15 @@ const MovieArea = () => {
             );
           })}
         </div>
-        {/* <div className="row">
+        <div className="row">
           <div className="col-12">
             <div className="pagination-wrap mt-30">
               <nav>
-                <ul>
-                  <li className="active">
-                    <a href="/#">1</a>
-                  </li>
-                  <li>
-                    <a href="/#">2</a>
-                  </li>
-                  <li>
-                    <a href="/#">3</a>
-                  </li>
-                  <li>
-                    <a href="/#">4</a>
-                  </li>
-                  <li>
-                    <a href="/#">Next</a>
-                  </li>
-                </ul>
+                <ul className="pagenation-ul"></ul>
               </nav>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   );
